@@ -23,8 +23,10 @@ import Data.Digest.Pure.SHA
 file_repository :: FilePath
 file_repository = "file-repository"
 
+-- specify these in lower case:
+
 consideredExtensions            = [ "pdf", "ps", "djvu", "dvi", "tex", "text" ]
-consideredCompressionExtensions = [ "gz", "bz2", "xz", "Z" ]
+consideredCompressionExtensions = [ "gz", "bz2", "xz", "z" ]
 
 isCandidate :: FilePath -> Bool
 isCandidate fName =
@@ -33,7 +35,7 @@ isCandidate fName =
     ""         -> False
     (c:ext') | c == '.'  -> if map toLower ext' `elem` consideredCompressionExtensions
                             then isCandidate rest
-                            else ext' `elem` consideredExtensions
+                            else map toLower ext' `elem` consideredExtensions
              | otherwise -> False
 
 main :: IO ()
