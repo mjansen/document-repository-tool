@@ -1,5 +1,6 @@
 import System.Process
 import GHC.Exts
+import Data.Char
 import Data.List
 import System.FilePath
 import Control.Applicative
@@ -30,7 +31,7 @@ isCandidate fName =
   let (rest, ext) = splitExtension fName
   in case ext of
     ""         -> False
-    (c:ext') | c == '.'  -> if ext' `elem` consideredCompressionExtensions
+    (c:ext') | c == '.'  -> if map toLower ext' `elem` consideredCompressionExtensions
                             then isCandidate rest
                             else ext' `elem` consideredExtensions
              | otherwise -> False
