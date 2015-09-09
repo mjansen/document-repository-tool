@@ -46,7 +46,11 @@ isCandidate fName =
 -- use the pure implementation of SHA to compute the sha1sum of a file:
 
 sha1sum :: FilePath -> IO String
-sha1sum fName = show . sha1 <$> L.readFile fName
+sha1sum fName = do
+  r <- show . sha1 <$> L.readFile fName
+  case length r of
+    0 -> return ""
+    _ -> return r
 
 -- load repository data base form a binary file:
 

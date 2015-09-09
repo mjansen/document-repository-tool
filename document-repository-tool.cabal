@@ -19,25 +19,25 @@ executable verify-repository
   main-is:             verify-repository.hs
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.7 && <6, process, containers, bytestring, async, SHA, filepath, directory, unix, cereal
+  build-depends:       base, process, containers, bytestring, async, SHA, filepath, directory, unix, cereal, BoundedChan
   -- hs-source-dirs:      
   default-language:    Haskell2010
-  ghc-options:         -Wall
+  ghc-options:         -Wall -threaded -rtsopts
 
 executable merge-into-repository
   main-is:             merge-into-repository.hs
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.7 && <6, process, containers, bytestring, async, SHA, filepath, directory, unix, cereal
+  build-depends:       base, process, containers, bytestring, async, SHA, filepath, directory, unix, cereal, BoundedChan
   -- hs-source-dirs:      
   default-language:    Haskell2010
-  ghc-options:         -Wall
+  ghc-options:         -Wall -threaded -rtsopts
 
 executable merge-index-files
   main-is:             merge-index-files.hs
   -- other-modules:       
   -- other-extensions:    
-  build-depends:       base >=4.7 && <6, process, containers, bytestring, async, SHA, filepath, directory, unix, cereal
+  build-depends:       base, process, containers, bytestring, async, SHA, filepath, directory, unix, cereal
   -- hs-source-dirs:      
   default-language:    Haskell2010
   ghc-options:         -Wall
